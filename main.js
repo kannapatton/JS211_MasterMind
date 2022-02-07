@@ -33,28 +33,34 @@ const generateHint = () =>  {
   // if letter is correct and in correct location, true
   //if letter is incorrect and in wrong location, false
   // your code here
- let arrayAnswer= answer.split('');
+ let arrayAnswer= solution.split('');
  let arrayGuess= guess.split('');
+ 
  //trim to lowercase?
   let rightPlace = 0
   let rightLetter = 0
   // for loop that needs to loop through each index of solution and compare to guess
-  for (let i=0; i<arrayAnswer.length; i++;) {
+  for (let i=0; i<arrayAnswer.length; i++) {
     if (arrayAnswer[i] == arrayGuess[i]) {
       rightPlace++
       arrayAnswer[i]=null;
+      arrayGuess[i]=null;
     } 
 
   }
-  for (let i=0; i<arrayAnswer.length; i++;){
+  for (let i=0; i<arrayAnswer.length; i++){
     //search arrayAnswer and compare to arrayGuess 
     // variable 
-    let index = arrayAnswer.(arrayGuess[i])
-    if (index>=0){
-      //do the next point system right letter and after for loop line 57 return string 
-
+    let findIndex = arrayAnswer.indexof(arrayGuess[i])
+    if (findIndex>=0){rightLetter++ 
+      arrayAnswer[i]=null;
+      arrayGuess[i]=null;
+      //do the next point system right letter and after for loop line 57 return string  
     }
   }
+  console.log(`you guessed ${arrayGuess} here's how many were in the correct location ${rightPlace} and here's how many letters were correct
+  ${rightLetter}`);
+  return (`${rightPlace} - ${rightLetter}`);
   // separate loops that check is it in rightplace and rightLetter
   // return points (string format 1-3 rightPlace-rightLetter)
 
@@ -68,7 +74,12 @@ const mastermind = (guess) => {
   // else if generate hint
   // check if guess is correct? compare to answer
   // repeat above until  won
-
+  if (solution !== guess){ generateHint();} 
+  else{
+  board.push(guess);}
+  if (solution == guess)
+  console.log('You guessed it!')
+  return ('You guessed it!');
   
 }
 
